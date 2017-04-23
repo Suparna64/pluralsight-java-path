@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 /**
  * Created by jsssn on 23-Apr-17.
  */
-public class Adder {
+public class Adder implements Runnable{
     private String inFile;
     private String outFile;
 
@@ -29,6 +29,14 @@ public class Adder {
 
         try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(outFile))) {
             writer.write("Total: " + total);
+        }
+    }
+
+    public void run() {
+        try {
+            doAdd();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

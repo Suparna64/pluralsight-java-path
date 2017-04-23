@@ -2,7 +2,7 @@
   <artifact type="jar" name="CalcEngine:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/CalcEngine_jar</output-path>
     <root id="archive" name="CalcEngine.jar">
-      <element id="module-output" name="CalcEngine" />
+      <element id="module-output" name="calc-engine" />
     </root>
   </artifact>
 </component>

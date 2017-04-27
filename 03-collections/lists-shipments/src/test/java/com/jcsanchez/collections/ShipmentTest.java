@@ -1,6 +1,7 @@
 package com.jcsanchez.collections;
 
 
+import com.jcsanchez.collections.Shipment;
 import org.junit.jupiter.api.Test;
 
 import static com.jcsanchez.collections.ProductFixtures.*;

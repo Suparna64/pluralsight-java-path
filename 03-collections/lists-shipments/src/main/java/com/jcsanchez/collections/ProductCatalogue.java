@@ -1,8 +1,5 @@
 package com.jcsanchez.collections;
 
-import com.jcsanchez.collections.Product;
-import com.jcsanchez.collections.Supplier;
-
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;

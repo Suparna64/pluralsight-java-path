@@ -3,16 +3,16 @@ package com.jcsanchez.generics._1_what_and_why_of_generics;
 /**
  * Created by jsssn on 30-Apr-17.
  */
-public class CircularBuffer {
-    private Object[] buffer;
+public class CircularBuffer<T> {
+    private T[] buffer;
     private int readCursor = 0;
     private int writeCursor = 0;
 
     public CircularBuffer(int size) {
-        buffer = new Object[size];
+        buffer = (T[]) new Object[size];
     }
 
-    public boolean offer(Object value) {
+    public boolean offer(T value) {
         if (buffer[writeCursor] != null) {
             return false;
         }
@@ -23,8 +23,8 @@ public class CircularBuffer {
         return true;
     }
 
-    public Object poll() {
-        final Object value = buffer[readCursor];
+    public T poll() {
+        final T value = buffer[readCursor];
 
         if (value != null) {
             buffer[readCursor] = null;

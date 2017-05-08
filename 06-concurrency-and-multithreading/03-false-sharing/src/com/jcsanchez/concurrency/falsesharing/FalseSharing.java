@@ -59,7 +59,7 @@ public class FalseSharing {
             System.out.printf("   Padded # threads %d - T = %dms\n", n, end - begin);
 
             for (int j = 0; j < threads.length; j++) {
-                threads[j] = new Thread(createUnaddedRunnable(j));
+                threads[j] = new Thread(createUnpaddedRunnable(j));
             }
 
             begin = System.currentTimeMillis();
@@ -74,7 +74,7 @@ public class FalseSharing {
         }
     }
 
-    private static Runnable createUnaddedRunnable(final int k) {
+    private static Runnable createUnpaddedRunnable(final int k) {
         return () -> {
             long i = ITERATIONS + 1;
             while (0 != --i) {

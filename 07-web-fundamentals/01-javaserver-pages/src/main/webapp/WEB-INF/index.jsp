@@ -9,9 +9,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>My App</title>
+    <title>${initParam.ProductName}</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="metro-bootstrap-master/css/metro-bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="app.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <%@include file="_header.jsp"%>
@@ -26,15 +27,16 @@
                 <%= calendar.getTime().toString() %>
             </div>
             <div class="col-md-9">
-                <% User user = (User) request.getAttribute("user");
-                    if (user == null) {
-                        user = new User();
-                    }
-                %>
+                <ul class="nav nav-tabs">
+                    <li><a href="#home" data-toggle="tab">${app.tabNames[0]}</a> </li>
+                    <li><a href="#other" data-toggle="tab">${app.tabNames[1]}</a> </li>
+                    <li><a href="#messages" data-toggle="tab">${app.tabNames[2]}</a> </li>
+                    <li><a href="#settings" data-toggle="tab">${app.tabNames[3]}</a> </li>
+                </ul>
                 <tabset>
                     <tab heading="Search">
-                        <div>
-                            <h2>Welcome <%= user.getName() %></h2>
+                        <div class="${app.formCssClass.name}">
+                            <h2>Welcome ${ user.name }</h2>
                             <form action="home" method="post">
                                 <p>
                                     Name: <input type="text" name="name"/>

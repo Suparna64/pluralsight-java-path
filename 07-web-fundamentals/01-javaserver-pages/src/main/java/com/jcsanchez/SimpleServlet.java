@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Created by jsssn on 08-May-17.
  */
-@WebServlet(urlPatterns = {"/home", "*.do"}, initParams = {@WebInitParam(name = "ProductName", value = "Welcome Application")})
+@WebServlet(urlPatterns = {"/home"}, name="SimpleServlet", initParams = {@WebInitParam(name = "ProductName", value = "Welcome Application")})
 public class SimpleServlet extends HttpServlet {
     String appName = "My Application";
 
@@ -30,7 +30,7 @@ public class SimpleServlet extends HttpServlet {
                     "<product>%s</product>" +
                     "</application>", name, appName);
         } else {
-            resp.getWriter().write("Please enter a name");
+            throw new ServletException("A name should be entered");
         }
     }
 

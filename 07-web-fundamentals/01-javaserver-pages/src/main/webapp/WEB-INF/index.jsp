@@ -1,5 +1,7 @@
 <%@ page import="java.util.Calendar" %>
-<%@ page import="com.jcsanchez.User" %><%--
+<%@ page import="com.jcsanchez.User" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%--
   Created by IntelliJ IDEA.
   User: jsssn
   Date: 09-May-17
@@ -15,7 +17,9 @@
     <link href="app.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<%@include file="_header.jsp"%>
+<%--<%@include file="_header.jsp"%>--%>
+<c:import url="_header.jsp" var="_header"/>
+${_header}
 <section class="main container-fluid">
     <%
         Calendar calendar = Calendar.getInstance();
@@ -24,19 +28,27 @@
         <h1>Home</h1>
         <div class="row-fluid">
             <div class="col-md-3">
+                <c:out value="Hello World"/>
+                <br/>
                 <%= calendar.getTime().toString() %>
             </div>
             <div class="col-md-9">
                 <ul class="nav nav-tabs">
-                    <li><a href="#home" data-toggle="tab">${app.tabNames[0]}</a> </li>
-                    <li><a href="#other" data-toggle="tab">${app.tabNames[1]}</a> </li>
-                    <li><a href="#messages" data-toggle="tab">${app.tabNames[2]}</a> </li>
-                    <li><a href="#settings" data-toggle="tab">${app.tabNames[3]}</a> </li>
+                    <c:forEach  items="${app.tabs}" var="tab">
+                        <li><a href="${tab.url}" data-toggle="tab">${tab.name}</a> </li>
+                    </c:forEach>
                 </ul>
                 <tabset>
                     <tab heading="Search">
                         <div class="${app.formCssClass.name}">
-                            <h2>Welcome ${ user.name }</h2>
+                            <c:choose>
+                                <c:when test="${!empty user.name}">
+                                    <h2>Welcome ${ user.name }!</h2>
+                                </c:when>
+                                <c:otherwise>
+                                    <h2>Welcome whoever you are!</h2>
+                                </c:otherwise>
+                            </c:choose>
                             <form action="home" method="post">
                                 <p>
                                     Name: <input type="text" name="name"/>

@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
@@ -19,6 +20,9 @@ public class OrderEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 
+	@ManyToOne
+	private OrderSourceEntity orderSourceEntity;
+
 	@Column(nullable=false)
 	private String orderNumber;
 
@@ -26,16 +30,19 @@ public class OrderEntity {
 	private String orderLabel;
 	
 	@Column
-	private long customerId;
+	private Long customerId;
 	
 	@Column
-	private long shippingAddressId;
+	private Long shippingAddressId;
 	
 	@Column
-	private long billingAddressId;
+	private Long billingAddressId;
 
 	@Column
 	private Date completionDate;
+
+	@Column
+	private Date fulfillmentDate;
 	
 	@OneToMany
 	private List<OrderItemEntity> orderItemList = new LinkedList<>();
@@ -102,5 +109,21 @@ public class OrderEntity {
 
 	public void setBillingAddressId(long billingAddressId) {
 		this.billingAddressId = billingAddressId;
+	}
+
+	public OrderSourceEntity getOrderSourceEntity() {
+		return orderSourceEntity;
+	}
+
+	public void setOrderSourceEntity(OrderSourceEntity orderSource) {
+		this.orderSourceEntity = orderSource;
+	}
+
+	public Date getFulfillmentDate() {
+		return fulfillmentDate;
+	}
+
+	public void setFulfillmentDate(Date fulfillmentDate) {
+		this.fulfillmentDate = fulfillmentDate;
 	}
 }

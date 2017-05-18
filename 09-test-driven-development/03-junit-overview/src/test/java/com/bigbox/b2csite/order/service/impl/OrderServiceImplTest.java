@@ -38,7 +38,7 @@ public class OrderServiceImplTest {
         List<OrderEntity> orderEntityListFixture = new LinkedList<>();
         orderEntityListFixture.add(orderEntityFixture);
 
-        when(mockOrderDao.findOrdersByCustomer(CUSTOMER_ID))
+        when(mockOrderDao.findByCustomerId(CUSTOMER_ID))
                 .thenReturn(orderEntityListFixture);
 
         OrderSummary orderSummaryFixture = new OrderSummary();
@@ -49,7 +49,7 @@ public class OrderServiceImplTest {
         List<OrderSummary> result = target.getOrderSummary(CUSTOMER_ID);
 
         // Verification
-        verify(mockOrderDao).findOrdersByCustomer(CUSTOMER_ID);
+        verify(mockOrderDao).findByCustomerId(CUSTOMER_ID);
         verify(mockTransformer).transform(orderEntityFixture);
 
         Assert.assertNotNull(result);

@@ -45,7 +45,7 @@ public class OrderServiceImpl implements OrderService {
 
 		try {
 			List<OrderEntity> orderEntityList = this.orderDao
-                    .findOrdersByCustomer(customerId);
+                    .findByCustomerId(customerId);
 
 			for (OrderEntity currentOrderEntity : orderEntityList) {
 				OrderSummary orderSummary = this.transformer
@@ -72,8 +72,8 @@ public class OrderServiceImpl implements OrderService {
 		while (!insertSuccessful && insertAttempt <= MAX_INSERT_ATTEMPT) {
 
 			try {
-				int resultValue = orderDao.insert(newOrderEntity);
-				if (resultValue == 1) {
+				OrderEntity receivedOrderEntity = orderDao.insert(newOrderEntity);
+				if (receivedOrderEntity != null) {
 					insertSuccessful = true;
 				} else {
 					++insertAttempt;

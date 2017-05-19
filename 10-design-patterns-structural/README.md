@@ -80,3 +80,64 @@ System.out.println(listOfInts);
 * Legacy
 * Retrofitted
 * Provides different interface
+
+## Composite
+
+### Concepts
+* Components represent part or whole structure
+* Compose objects into tree structures
+* Individual object treated as Composite
+* Same operations applied on individual and composites
+* Examples:
+  * java.awt.Component
+  * JSF widgets
+  * RESTful service GETs
+  
+### Design
+* Tree structures
+* Component
+* Leaf or Composite, same operations
+* Composite knows about child objects
+* Component, Leaf, Composite
+
+### Pitfalls
+* Can overly simplify system
+* Difficult to restrict, rely on runtime checks instead of compile type safety
+* Implementation can possibly be costly for huge composites or if it is implemented poorly
+
+### Contrast
+#### Composite
+* Tree structure
+* Leaf and Composite have same interface
+* Unity between objects
+
+#### Decorator
+* Contains another entity (Composition)
+* Modifies behavior, usually adds functionality
+* Does not change underlying object
+
+## Decorator
+
+### Concepts
+* Also called a wrapper
+* Add behavior without affecting others
+* More than just inheritance
+* Single Responsibility Principle - Every class should have responsibility over a single part of the functionality provided by the software, should be entirely encapsulated by the class
+* Compose behavior dynamically
+* Examples:
+  * java.io.InputStream
+  * java.util.Collections#checkedList
+  * UI components in AWI and Swing
+  
+### Design
+* Inheritance based
+* Utilized composition and inheritance (is-a, has-a)
+* Alternative to subclassing
+* Constructor requires instance from hierarchy
+
+### Pitfalls
+* New class for every feature added
+* Multiple little objects
+* Often confused with simple inheritance
+
+### Facade Pattern

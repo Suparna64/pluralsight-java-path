@@ -140,4 +140,105 @@ System.out.println(listOfInts);
 * Multiple little objects
 * Often confused with simple inheritance
 
-### Facade Pattern
+## Facade Pattern
+
+### Concepts
+* Make an API easier to use
+* Reduce dependencies on outside code
+* Simplify the interface or client usage
+* Usually a refactoring pattern
+* Example:
+  * java.net.URL
+  * javax.faces.context.FacesContext
+  
+### Design
+* Class that utilizes composition
+* Shouldn't have a need for inheritance
+* Typically encompasses full lifecycle
+
+### Pitfalls
+* Typically used to clean up code
+* Should think about API design
+* Flat problem/structure (usually no inheritance)
+* The "Singleton" of Structural Pattern (missed-used/over-used)
+
+### Contrasts
+#### Facade
+* Simplifies interfaces
+* Works with composites
+* Cleaner API
+
+#### Adapter
+* Also a refactoring pattern
+* Modifies behavior (adds)
+* Provides a different interface
+
+## Flyweight (Optimization pattern)
+
+### Concepts
+* More efficient use of memory
+* Large number of similar objects
+* Immutable
+* Most of the object states can be extrinsic
+* Examples:
+  * java.lang.String
+  * java.lang.Integer#valueOf(int)
+  * Boolean, Byte, Character, Short, Long
+
+### Design
+* Pattern of patterns
+* Utilizes a Factory
+* Encompasses Creation and Structure
+* Client, Factory, Flyweight, ConcreteFlyweight
+
+### Pitfalls
+* Complex pattern
+* Premature optimization
+* Must understand Factory
+* Not a graphical pattern
+
+### Contrast
+#### Flyweight
+* Memory Optimization
+* Optimization pattern
+* Immutable Objects
+
+#### Facade
+* Refactoring Pattern
+* Simplified Client
+* Provides a different interface
+
+## Proxy
+
+### Concepts
+* Interface by wrapping
+* Can add functionality
+* Security, Simplicity, Remote, Cost
+* Proxy called to access real object
+* Examples:
+  * java.lang.reflect.Proxy
+  * java.rmi.*
+
+### Design
+* Interface based
+* Interface and Implementation Class
+* java.lang.reflection.InvocationHandler
+* java.lang.reflect.Proxy
+* Client, Interface, InvocationHandler, Proxy, Implementation
+
+### Pitfalls
+* Only a proxy
+* Another Abstraction
+* Similar to other patterns
+
+### Contrast
+#### Proxy
+* Can add functionality, but not its main purpose
+* Can only have one
+* Compile time
+
+#### Decorator
+* Dynamically add functionality
+* Chained
+* Decorator points to its own type
+* Runtime

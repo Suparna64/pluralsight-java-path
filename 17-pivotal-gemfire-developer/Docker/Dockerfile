@@ -34,6 +34,5 @@ ENV PATH $JAVA_HOME/jre/bin:$JAVA_HOME/java-1.8-openjdk/bin:$GEMFIRE/bin:$PATH
 # For pulse
 EXPOSE 7070
 
-# Can't use ENTRYPOINT ["gfsh"] because gfsh has /bin/bash instead of /bin/sh
 WORKDIR /gemfire
 ENTRYPOINT ["gfsh"]

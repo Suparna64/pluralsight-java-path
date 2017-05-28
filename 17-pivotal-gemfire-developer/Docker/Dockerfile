@@ -31,8 +31,8 @@ ENV GEMFIRE /usr/lib/pivotal/pivotal-gemfire-9.0.4
 ENV GF_JAVA $JAVA_HOME/bin/java
 ENV PATH $JAVA_HOME/jre/bin:$JAVA_HOME/java-1.8-openjdk/bin:$GEMFIRE/bin:$PATH
 
-# For pulse
-EXPOSE 7070
+# Ports
+EXPOSE 7070 8080 10334 40404 1099
 
 WORKDIR /gemfire
 ENTRYPOINT ["gfsh"]
